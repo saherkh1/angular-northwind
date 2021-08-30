@@ -13,5 +13,10 @@
     <app-slogan slogan="Best product ever!"> </app-slogan>
     <app-slogan slogan="Exotic product!" color="black"> </app-slogan>
 
+    <!-- LifeCycle hook-->
+    <app-clock></app-clock>
+
+    <app-tip (tipSelected)=displayTip($event)></app-tip>
+    <span>Tip to Send:{{tip}}</span>
 
 </div>
