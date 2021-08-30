@@ -1,0 +1,10 @@
+<div class="box">
+    <label> My Location</label>
+    <select #location (change)="show(location.value)">
+        <option>North</option>
+        <option>Center</option>
+        <option>south</option>
+    </select>
+    <span>I live in the {{location.value}} </span>
+
+</div>

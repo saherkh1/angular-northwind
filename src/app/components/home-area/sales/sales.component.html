@@ -1,0 +1,10 @@
+<div class="box">
+    <form>
+
+        <span [class]="styling"> Sales: </span>
+
+        <!-- <span *ngIf="isWeeking()">Pizza | </span> -->
+
+        <span *ngFor="let d of desserts">{{d.name}} | </span>
+    </form>
+</div>

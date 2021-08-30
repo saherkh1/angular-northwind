@@ -10,6 +10,9 @@ import { DiscountComponent } from './components/home-area/discount/discount.comp
 import { BuyNowComponent } from './components/home-area/buy-now/buy-now.component';
 import { OrderComponent } from './components/home-area/order/order.component';
 import { FormsModule } from '@angular/forms';
+import { SalesComponent } from './components/home-area/sales/sales.component';
+import { LocationComponent } from './components/home-area/location/location.component';
+import { SloganComponent } from './components/home-area/slogan/slogan.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +23,10 @@ import { FormsModule } from '@angular/forms';
         HomeComponent,
         DiscountComponent,
         BuyNowComponent,
-        OrderComponent
+        OrderComponent,
+        SalesComponent,
+        LocationComponent,
+        SloganComponent
     ],
     imports: [
         BrowserModule,
