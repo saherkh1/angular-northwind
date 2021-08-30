@@ -8,7 +8,7 @@ This is a test project to demonstrate using Intern with Angular 4+. It contains 
 
 ```shell
 git clone https://github.com/saherkh1/angular-northwind
-cd intern-angular
+cd angular-northwind
 ```
 
 ### Install npm packages
