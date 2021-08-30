@@ -7,7 +7,7 @@ This is a test project to demonstrate using Intern with Angular 4+. It contains 
 ### Clone the repo
 
 ```shell
-git clone https://github.com/bryanforbes/intern-angular
+git clone https://github.com/saherkh1/angular-northwind
 cd intern-angular
 ```
 
