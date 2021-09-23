@@ -16,6 +16,10 @@ import { SloganComponent } from './components/home-area/slogan/slogan.component'
 import { ClockComponent } from './components/home-area/clock/clock.component';
 import { TipComponent } from './components/home-area/tip/tip.component';
 import { PricingComponent } from './components/home-area/pricing/pricing.component';
+import { ProductListComponent } from './components/products-area/product-list/product-list.component';
+import { AboutComponent } from './components/about-area/about/about.component';
+import { PageNotFoundComponent } from './components/layout-area/page-not-found/page-not-found.component';
+import { ProductDetailsComponent } from './components/products-area/product-details/product-details.component';
 
 @NgModule({
     declarations: [
@@ -32,7 +36,11 @@ import { PricingComponent } from './components/home-area/pricing/pricing.compone
         SloganComponent,
         ClockComponent,
         TipComponent,
-        PricingComponent
+        PricingComponent,
+        ProductListComponent,
+        AboutComponent,
+        PageNotFoundComponent,
+        ProductDetailsComponent
     ],
     imports: [
         BrowserModule,
