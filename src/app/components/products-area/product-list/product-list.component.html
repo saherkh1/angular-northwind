@@ -1,1 +1,4 @@
-<p>product-list works!</p>
+<div>
+    <a routerLink="/products/new">Add Product</a>
+    <app-product-card *ngFor="let p of products" [product]="p"></app-product-card>
+</div>

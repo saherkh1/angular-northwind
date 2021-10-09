@@ -6,7 +6,7 @@ const baseUrl = "http://localhost:3030/api/";
 export const environment = {
   production: false,
   productUrl: baseUrl + "products/",
-  productImagesUrl: baseUrl + "products/images/ ",
+  productImagesUrl: baseUrl + "products/images/",
 
 };
 

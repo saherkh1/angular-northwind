@@ -1,1 +1,14 @@
-<p>product-details works!</p>
+<div class="box">
+
+    <div *ngIf="product">
+        <h3>{{product.name}}</h3>
+        <h3>Price: {{product.price | currency}}</h3>
+        <h3>Stock: {{product.stock}}</h3>
+        <img [src]="imageUrl" />
+        <br>
+
+        <a routerLink="/products">Back to List</a>
+    </div>
+
+
+</div>
