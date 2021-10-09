@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductModel } from 'src/app/models/product-model';
+import { ProductsService } from 'src/app/services/products.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -16,16 +17,24 @@ export class ProductDetailsComponent implements OnInit {
     public product: ProductModel;
 
     //dependency injection
-    constructor(private myActivatedRout: ActivatedRoute, private http: HttpClient) { }
+    constructor(private myActivatedRout: ActivatedRoute, private http: HttpClient, private myProductsService: ProductsService) { }
 
     async ngOnInit() {
         try {
-            const id = this.myActivatedRout.snapshot.params.id;
-            this.product = await this.http.get<ProductModel>(environment.productUrl + id).toPromise();
+            //without rdux & service 
+            // const id = this.myActivatedRout.snapshot.params.id;
+            // this.product = await this.http.get<ProductModel>(environment.productUrl + id).toPromise();
+            // this.imageUrl = environment.productImagesUrl + this.product.imageName;
+            
+            //With redux & service
+            const id = +this.myActivatedRout.snapshot.params.id;
+            this.product = await this.myProductsService.getOneProductAsync(id);
             this.imageUrl = environment.productImagesUrl + this.product.imageName;
+
+
         }
-        catch (err) {
-            alert(err);
+        catch (err: any) {
+            alert(err.message);
         }
     }
 

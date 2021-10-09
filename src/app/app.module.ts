@@ -9,7 +9,7 @@ import { HomeComponent } from './components/home-area/home/home.component';
 import { DiscountComponent } from './components/home-area/discount/discount.component';
 import { BuyNowComponent } from './components/home-area/buy-now/buy-now.component';
 import { OrderComponent } from './components/home-area/order/order.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule ,ReactiveFormsModule } from '@angular/forms';
 import { SalesComponent } from './components/home-area/sales/sales.component';
 import { LocationComponent } from './components/home-area/location/location.component';
 import { SloganComponent } from './components/home-area/slogan/slogan.component';
@@ -24,6 +24,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { ProductCardComponent } from './components/products-area/product-card/product-card.component';
 import { AddProductComponent } from './components/products-area/add-product/add-product.component';
 import { UpdateProductComponent } from './components/products-area/update-product/update-product.component';
+import { TestObservableComponent } from './components/about-area/test-observable/test-observable.component';
 
 @NgModule({
     declarations: [
@@ -47,9 +48,11 @@ import { UpdateProductComponent } from './components/products-area/update-produc
         ProductDetailsComponent,
         ProductCardComponent,
         AddProductComponent,
-        UpdateProductComponent
+        UpdateProductComponent,
+        TestObservableComponent
     ],
     imports: [
+        ReactiveFormsModule,
         BrowserModule,
         AppRoutingModule,
         FormsModule,

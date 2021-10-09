@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ProductModel } from 'src/app/models/product-model';
+import { ProductsService } from 'src/app/services/products.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -12,14 +13,18 @@ export class ProductListComponent implements OnInit {
 
     public products: ProductModel[] = [];
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private myProductsService: ProductsService) { }
 
     async ngOnInit() {
         try {
-            this.products = await this.http.get<ProductModel[]>(environment.productUrl).toPromise();
+            //without redux
+            // this.products = await this.http.get<ProductModel[]>(environment.productUrl).toPromise();
+
+            //With redux and service to help 
+            this.products = await this.myProductsService.getAllProductsAsync();
         }
-        catch (err) {
-            alert(err);
+        catch (err: any) {
+            alert(err.message);
         }
     }
 
