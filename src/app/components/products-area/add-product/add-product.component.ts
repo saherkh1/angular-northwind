@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductModel } from 'src/app/models/product-model';
+import { ProductModel } from 'src/app/models/product.model';
+import { IncompleteGuard } from 'src/app/services/incomplete.guard';
+import { NotifyService } from 'src/app/services/notify.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { environment } from 'src/environments/environment';
 
@@ -13,7 +15,7 @@ import { environment } from 'src/environments/environment';
 export class AddProductComponent implements OnInit {
 
     public product = new ProductModel(); //Create empty object: to use in the two-way binding
-    constructor(private http: HttpClient, private myRouter: Router, private myProductsService: ProductsService) { }
+    constructor(private notify: NotifyService,private http: HttpClient, private myRouter: Router, private myProductsService: ProductsService) { }
 
     ngOnInit(): void {
     }
@@ -33,11 +35,16 @@ export class AddProductComponent implements OnInit {
             
             await this.myProductsService.addProductAsync(this.product);
 
-            alert("Product added");
+            IncompleteGuard.canLeave = true;
+
+            this.notify.success("Product added");
             this.myRouter.navigateByUrl("/products");
         }
         catch (err: any) {
-            alert(err.message);
+            this.notify.error(err.message);
         }
+    }
+    public changeOccurred(){
+        IncompleteGuard.canLeave = false;
     }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NotifyService } from 'src/app/services/notify.service';
 
 // ng g c components/home-area/order
 
@@ -12,14 +13,14 @@ export class OrderComponent implements OnInit {
     public tooltip = "Free Shipping!";
     public item = "";
 
-    constructor() { }
+    constructor(private notify: NotifyService) { }
 
     ngOnInit(): void {
     }
 
     public showHelp(args: MouseEvent): void { // args - event object 
         console.log(args);
-        alert("Fill in the order form...");
+        this.notify.error("Fill in the order form...");
         this.item = "";
     }
 

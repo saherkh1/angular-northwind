@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductModel } from 'src/app/models/product-model';
+import { ProductModel } from 'src/app/models/product.model';
+import { IncompleteGuard } from 'src/app/services/incomplete.guard';
+import { NotifyService } from 'src/app/services/notify.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { environment } from 'src/environments/environment';
 
@@ -27,7 +29,7 @@ export class UpdateProductComponent implements OnInit {
         imageControl: this.imageControl
     });
 
-    constructor(private myActivatedRoute: ActivatedRoute,private myProductService: ProductsService, private myRouter :Router) { }
+    constructor(private notify: NotifyService ,private myActivatedRoute: ActivatedRoute,private myProductService: ProductsService, private myRouter :Router) { }
 
     async ngOnInit() {
         try{
@@ -44,7 +46,7 @@ export class UpdateProductComponent implements OnInit {
 
         }
         catch(err: any){
-            alert(err.message)
+            this.notify.error(err.message)
         }
     }
 
@@ -69,7 +71,8 @@ export class UpdateProductComponent implements OnInit {
 
             //with service & redux
             await this.myProductService.updateProductAsync(this.product);
-            alert("Product updated");
+            IncompleteGuard.canLeave = true;
+            this.notify.success("Product updated");
             this.myRouter.navigateByUrl("/products");
 
             // await this.myProductsService.updateProductAsync(this.product);
@@ -78,8 +81,11 @@ export class UpdateProductComponent implements OnInit {
 
         }
         catch (err: any) {
-            alert(err.message);
+            this.notify.error(err.message);
         }
+    }
+    public changeOccurred(){
+        IncompleteGuard.canLeave = false;
     }
 
 }

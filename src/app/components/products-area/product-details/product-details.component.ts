@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductModel } from 'src/app/models/product-model';
+import { ProductModel } from 'src/app/models/product.model';
+import { NotifyService } from 'src/app/services/notify.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { environment } from 'src/environments/environment';
 
@@ -17,7 +18,7 @@ export class ProductDetailsComponent implements OnInit {
     public product: ProductModel;
 
     //dependency injection
-    constructor(private myActivatedRout: ActivatedRoute, private http: HttpClient, private myProductsService: ProductsService) { }
+    constructor(private notify: NotifyService, private myActivatedRout: ActivatedRoute, private http: HttpClient, private myProductsService: ProductsService) { }
 
     async ngOnInit() {
         try {
@@ -34,7 +35,7 @@ export class ProductDetailsComponent implements OnInit {
 
         }
         catch (err: any) {
-            alert(err.message);
+            this.notify.error(err.message);
         }
     }
 

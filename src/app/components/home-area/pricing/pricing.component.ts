@@ -1,5 +1,6 @@
 import { CalcService } from './../../../services/calc.service';
 import { Component, OnInit } from '@angular/core';
+import { NotifyService } from 'src/app/services/notify.service';
 
 @Component({
     selector: 'app-pricing',
@@ -13,7 +14,7 @@ export class PricingComponent {
 
     private myCalc;
 
-    constructor(calc: CalcService) {
+    constructor(private notify: NotifyService,calc: CalcService) {
         //calc is now ready to use because
         //angular injects the object
         this.myCalc = calc;
@@ -23,7 +24,7 @@ export class PricingComponent {
 
         const sum = this.myCalc.getSum(arr);
 
-        alert("Sum: " + sum);
+        this.notify.success("Sum: " + sum);
     }
 
 }
