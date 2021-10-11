@@ -12,21 +12,26 @@ import { LoginComponent } from './components/auth-area/login/login.component';
 import { LogoutComponent } from './components/auth-area/logout/logout.component';
 import { AuthGuard } from './services/auth.guard';
 import { IncompleteGuard } from './services/incomplete.guard';
+import { ContactUsComponent } from './components/contact-us-area/contact-us/contact-us.component';
 
 const routes: Routes = [
     { path: "home", component: HomeComponent },
     
+    { path: "suppliers", loadChildren: () => import("./components/suppliers-area/suppliers.module").then(m => m.SuppliersModule) },
+
     { path: "register", component: RegisterComponent },
     { path: "login", component: LoginComponent },
     { path: "logout", canActivate: [AuthGuard], component: LogoutComponent },
-    
+
     { path: "products", component: ProductListComponent },
     { path: "products/details/:id", component: ProductDetailsComponent },
-    
+
     { path: "products/new", canActivate: [AuthGuard], canDeactivate: [IncompleteGuard], component: AddProductComponent },
     { path: "products/edit/:id", canActivate: [AuthGuard], canDeactivate: [IncompleteGuard], component: UpdateProductComponent },
-    
+
     { path: "about", component: AboutComponent },
+    { path: "contact-us", component: ContactUsComponent },
+
     { path: "", redirectTo: "/home", pathMatch: "full" },
     { path: "**", component: PageNotFoundComponent }
 
